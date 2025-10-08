@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Sign Up</title>
+    <link rel="stylesheet" href="./src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance"
+    />
+  </head>
+  <body>
+    <header class="shadow-sm">
+      <div class="w-[90%] m-auto py-4 items-center flex justify-between">
+        <a href="./index.html">
+          <div class="flex gap-3 items-center">
+            <span
+              class="material-symbols-outlined text-4xl font-medium text-blue-700"
+            >
+              account_balance
+            </span>
+            <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
+          </div>
+        </a>
+        <!-- nav lists -->
+
+        <div class="text-white flex gap-3">
+          <button
+            class="hidden sm:block buttonStyle bg-blue-600 hover:bg-blue-700"
+          >
+            <a href="./signin.html">Sign in</a></button
+          ><button class="buttonStyle bg-blue-600 hover:bg-blue-700">
+            <a href="./signup.html"> Sign up</a>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="bg-gray-50 min-h-[90vh] flex items-center justify-center p-4">
+      <div class="max-w-sm w-full">
+        <!-- Main Sign Up Card -->
+        <div class="bg-white border border-gray-300 rounded-sm p-8 mb-4">
+          <!-- Instagram Logo -->
+          <div class="text-center mb-8">
+            <h1
+              class="text-3xl font-bold instagram-gradient bg-clip-text text-blue-600 mb-4"
+            >
+              WBEE BANK
+            </h1>
+            <p class="text-gray-600 font-semibold text-sm">
+              Manage your money smarter, faster, and safer.
+            </p>
+          </div>
+          <!-- Sign Up Form -->
+          <form id="signupForm" class="space-y-3">
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              class="inpStyle"
+            />
+            <input
+              id="firstName"
+              type="text"
+              placeholder="firstName"
+              class="inpStyle"
+            />
+            <input
+              id="lastName"
+              type="text"
+              placeholder="lastName"
+              class="inpStyle"
+            />
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              class="inpStyle"
+            />
+            <button
+              id="signup-Btn"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-sm text-sm mt-4"
+            >
+              Sign up
+            </button>
+          </form>
+          <!-- Terms -->
+          <div class="text-center mt-6">
+            <p id="error-text" class="text-red-900 mb-3"></p>
+            <p class="text-xs text-gray-500 leading-4">
+              By signing up, you agree to our
+              <a href="#" class="text-gray-900 font-semibold">Terms</a>,
+              <a href="#" class="text-gray-900 font-semibold">Privacy Policy</a>
+              and
+              <a href="#" class="text-gray-900 font-semibold">Cookies Policy</a
+              >.
+            </p>
+          </div>
+        </div>
+        <!-- Login Link Card -->
+        <div class="bg-white border border-gray-300 rounded-sm p-6 text-center">
+          <p class="text-sm text-gray-900">
+            Have an account?
+            <a
+              href="./signin.html"
+              class="text-blue-600 font-semibold hover:text-blue-700"
+              >Log in</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="" type="module"></script>
+  </body>
+</html>
