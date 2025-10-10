@@ -1,0 +1,93 @@
+const emailEl = document.getElementById("email");
+const passwordEl = document.getElementById("password");
+const firstNameEl = document.getElementById("firstName");
+const lastNameEl = document.getElementById("lastName");
+
+const signupFormEl = document.getElementById("signupForm");
+const signupBtn = document.getElementById("signup-Btn");
+const errorText = document.getElementById("error-text");
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD3abYaBPoY1MBuZ0Ob9jfFOkGcwS7s2Zs",
+  authDomain: "wbee-bank.firebaseapp.com",
+  projectId: "wbee-bank",
+  storageBucket: "wbee-bank.firebasestorage.app",
+  messagingSenderId: "562089693991",
+  appId: "1:562089693991:web:b031edb912f5420e5fcf02",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const DB = getFirestore(app);
+const usersColRef = collection(DB, "USERS");
+
+const handleSignup = async () => {
+  signupBtn.textContent = "processing...";
+  try {
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      emailEl.value,
+      passwordEl.value
+    );
+    const userDetails = await addDoc(usersColRef, {
+      firstName: firstNameEl.value,
+      lastName: lastNameEl.value,
+      email: emailEl.value,
+    });
+    
+    if (userCredentials) {
+      signupBtn.textContent = "Redirecting...";
+    }
+    console.log(userCredentials.user.email);
+    if (userCredentials.user) {
+      sendEmailVerification(userCredentials.user);
+    }
+    alert("Account Created Succesfully");
+    // window.location.href = "./signin.html";
+  } catch (error) {
+    // console.log(error.code);
+    const errorCode = error.code;
+    if (errorCode == "auth/invalid-email") {
+      errorText.textContent = "Invalid Email or Password";
+      return;
+    } else if (errorCode == "auth/email-already-in-use") {
+      errorText.textContent = "Email already in Use";
+      return;
+    } else if (errorCode == "auth/missing-password") {
+      errorText.textContent = "Password should not be Empty";
+      return;
+    } else if (errorCode == "auth/missing-email") {
+      errorText.textContent = "Email should not be empty";
+      return;
+    } else if (errorCode == "auth/weak-password") {
+      errorText.textContent = "Password is too weak";
+      return;
+    }
+  } finally {
+    console.log("DONE!!!");
+    signupBtn.textContent = "Sign Up";
+  }
+};
+
+signupFormEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleSignup();
+});
