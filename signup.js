@@ -12,7 +12,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebas
 import {
   getFirestore,
   collection,
-  addDoc,
+  doc,
+  setDoc,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 import {
   getAuth,
@@ -40,30 +41,29 @@ const DB = getFirestore(app);
 const usersColRef = collection(DB, "USERS");
 
 const handleSignup = async () => {
-  signupBtn.textContent = "processing...";
+  signupBtn.textContent = "Signing Up...";
   try {
     const userCredentials = await createUserWithEmailAndPassword(
       auth,
       emailEl.value,
       passwordEl.value
     );
-    const userDetails = await addDoc(usersColRef, {
-      firstName: firstNameEl.value,
-      lastName: lastNameEl.value,
-      email: emailEl.value,
-    });
-    
-    if (userCredentials) {
-      signupBtn.textContent = "Redirecting...";
-    }
-    console.log(userCredentials.user.email);
+    // console.log(userCredentials.user.uid);
     if (userCredentials.user) {
+      signupBtn.textContent = "Redirecting...";
+
       sendEmailVerification(userCredentials.user);
+      const newUserDocRef = doc(usersColRef, userCredentials.user.uid);
+      await setDoc(newUserDocRef, {
+        firstName: firstNameEl.value,
+        lastName: lastNameEl.value,
+        email: emailEl.value,
+      });
+      alert("Account Created Succesfully");
+      window.location.href = "./signin.html";
     }
-    alert("Account Created Succesfully");
-    // window.location.href = "./signin.html";
   } catch (error) {
-    // console.log(error.code);
+    console.log(error);
     const errorCode = error.code;
     if (errorCode == "auth/invalid-email") {
       errorText.textContent = "Invalid Email or Password";
