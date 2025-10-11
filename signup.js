@@ -14,11 +14,13 @@ import {
   collection,
   doc,
   setDoc,
+  getDoc,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -80,12 +82,16 @@ const handleSignup = async () => {
     } else if (errorCode == "auth/weak-password") {
       errorText.textContent = "Password is too weak";
       return;
+    } else {
+      errorText.textContent = "Invalid Credentials";
+      return;
     }
   } finally {
     console.log("DONE!!!");
     signupBtn.textContent = "Sign Up";
   }
 };
+
 
 signupFormEl.addEventListener("submit", (e) => {
   e.preventDefault();

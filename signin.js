@@ -3,12 +3,20 @@ const loginForm = document.getElementById("login-form");
 const passwordEl = document.getElementById("password");
 const errorMessage = document.getElementById("error-message");
 const loginBtn = document.getElementById("login-btn");
+let data;
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import {
   getAuth,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,17 +35,35 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const DB = getFirestore(app);
+const usersColRef = collection(DB, "USERS");
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // console.log(user);
+    const docRef = doc(usersColRef, user.uid);
+    const docSnapShot = await getDoc(docRef);
+    data = docSnapShot.data();
+    // console.log(data);
+  } else {
+    console.log("No current User");
+  }
+});
 
 const handleSignin = async () => {
   loginBtn.textContent = "Signing In...";
+  errorMessage.textContent = " ";
+
   try {
     const userSignin = await signInWithEmailAndPassword(
       auth,
       emailEl.value,
       passwordEl.value
     );
-    console.log(userSignin);
+    // console.log(userSignin);
     alert("Signin Successful, Redirecting...");
+    alert(`Welcome back ${data.firstName}`);
+    window.location.href = "./dashboard.html";
   } catch (error) {
     console.log(error.code);
     const errorCode = error.code;
@@ -46,6 +72,12 @@ const handleSignin = async () => {
       return;
     } else if (errorCode == "auth/invalid-email") {
       errorMessage.textContent = "Invalid Email or Password";
+      return;
+    } else if (errorCode == "auth/network-request-failed") {
+      errorMessage.textContent = "Network Error!!!";
+      return;
+    } else {
+      errorMessage.textContent = "Invalid Credentials";
       return;
     }
   } finally {
