@@ -10,133 +10,210 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&"
     />
   </head>
-  <body class="overflow-y-hidden">
-    <div class="grid grid-cols-[auto_1fr]">
+  <body class="">
+    <div id="pagecontent" class="xl:grid xl:grid-cols-[auto_1fr] flex-col">
       <!-- first section    -->
-      <div class="p-8 space-y-10 bg-blue-50 h-[100vh]">
-        <div class="flex gap-3 items-center">
-          <span
-            class="material-symbols-outlined text-4xl font-medium text-blue-700"
+      <div
+        class="p-8 max-[425px]:shadow-sm max-[425px]:p-2 max-md:px-5 max-xl:px-8 max-[425px]:py-4 max-[425px]:mb-3 max-[425px]:space-y-0 space-y-5 xl:space-y-10 xl:bg-blue-50 h-full"
+      >
+        <div class="flex justify-between items-center">
+          <div class="flex gap-3 items-center">
+            <span
+              class="material-symbols-outlined text-4xl font-medium text-blue-700"
+            >
+              account_balance
+            </span>
+            <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
+          </div>
+          <nav
+            class="text-lg hidden md:flex xl:hidden font-semibold gap-8 lg:gap-12 md:gap-17"
           >
-            account_balance
-          </span>
-          <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
+            <a class="border-b-3 border-blue-600" href="./dashboard.html"
+              >Dashboard</a
+            ><a href="">Payments</a><a href="">Transactions</a
+            ><a class="hidden lg:block" href="./profile.html">Profile</a>
+          </nav>
+          <!-- profile section  -->
+          <div class="flex xl:hidden gap-8 items-center">
+            <div class="hidden md:block">
+              <span
+                class="material-symbols-outlined text-gray-500 cursor-pointer"
+              >
+                mail
+              </span>
+            </div>
+            <div class="hidden md:block">
+              <span
+                class="material-symbols-outlined text-gray-500 cursor-pointer"
+              >
+                notifications
+              </span>
+            </div>
+            <div class="md:hidden">
+              <span class="material-symbols-outlined"> menu </span>
+            </div>
+
+            <a class="max-[425px]:hidden" href="#profile">
+              <div id="profile-icon ">
+                <img
+                  class="w-12 h-12 object-cover cursor-pointer rounded-full"
+                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                  alt=""
+                />
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="space-y-6">
-          <!-- Card header  -->
-          <div class="flex gap-40 items-baseline">
-            <h1 class="text-black text-2xl font-bold">Your cards</h1>
-            <p class="text-blue-700">view all</p>
-          </div>
-          <!-- Card  -->
-          <div
-            class="p-5 rounded-xl border space-y-4 text-white bg-gradient-to-r from-blue-500 to-indigo-600"
-          >
-            <div class="flex justify-between items-baseline">
-              <p class="text-lg font-semibold">Wells Fargo</p>
-              <p class="font-bold text-xl">MASTERCARD</p>
+        <div
+          class="space-y-6 max-[425px]:hidden max-xl:bg-gray-100 max-xl:rounded-xl p-5 xl:p-0 md:flex md:gap-10 justify-around xl:gap-0 xl:flex-col"
+        >
+          <div class="space-y-6">
+            <!-- Card header  -->
+            <div class="flex justify-between xl:gap-40 items-baseline">
+              <h1 class="text-black text-2xl font-bold">Your cards</h1>
+              <p class="text-blue-700 md:hidden xl:blocky">view all</p>
             </div>
-            <div class="flex justify-between items-center">
-              <img class="w-15 h-15" src="./media/card_chip-Nbg.png " alt="" />
-              <span class="text-lg">1223 1223 1233 1223</span>
-            </div>
-            <div class="flex justify-between items-baseline">
-              <p class="font-normal">Waliu Badmus</p>
-              <p class="text-xl font-semibold">
-                <span>$</span>78,300<span>.00</span>
-              </p>
-            </div>
-          </div>
-          <!-- Send Money  -->
-          <div class="space-y-6 mt-40">
-            <div class="flex items-baseline justify-between">
-              <h1 class="text-black text-2xl font-bold">Send money to</h1>
-              <p class="text-blue-700">view all</p>
-            </div>
-            <div class="grid grid-cols-5 gap-3 space-y-4 justify-between">
-              <div class="text-center">
-                <img
-                  class="w-14 h-14 object-cover"
-                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt=""
-                />
-                <p>john</p>
-              </div>
-              <div class="text-center">
-                <img
-                  class="w-14 h-14 object-cover"
-                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt=""
-                />
-                <p>john</p>
-              </div>
-              <div class="text-center">
-                <img
-                  class="w-14 h-14 object-cover"
-                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt=""
-                />
-                <p>john</p>
-              </div>
-              <div class="text-center">
-                <img
-                  class="w-14 h-14 object-cover"
-                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt=""
-                />
-                <p>Aaron</p>
-              </div>
-              <div class="text-center">
-                <img
-                  class="w-14 h-14 object-cover"
-                  src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-                  alt=""
-                />
-                <p>john</p>
-              </div>
-            </div>
-            <div class="flex justify-between">
-              <input
-                placeholder="Amount"
-                class="inpStyle text-black text-xl font-medium inpHov w-[80%] bg-blue-100 focus:bg-blue-100"
-                type="text"
-              />
-              <div
-                class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center"
-              >
-                <span class="material-symbols-outlined"> arrow_right_alt </span>
-              </div>
-            </div>
-          </div>
-          <!-- Make Payment -->
-
-          <div class="mt-15">
-            <button
-              class="buttonStyle bg-orange-500 py-4 text-lg text-white w-full"
+            <!-- Card  -->
+            <div
+              class="p-5 min-w-[320px] max-w-[320px] rounded-xl border space-y-4 text-white bg-gradient-to-r from-blue-500 to-indigo-600"
             >
-              Make a payment
-            </button>
+              <div class="flex justify-between items-baseline">
+                <p class="text-lg font-semibold">Wells Fargo</p>
+                <p class="font-bold text-xl">MASTERCARD</p>
+              </div>
+              <div class="flex justify-between items-center">
+                <img
+                  class="w-15 h-15"
+                  src="./media/card_chip-Nbg.png "
+                  alt=""
+                />
+                <span class="text-lg">1223 1223 1233 1223</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <p class="font-normal">Waliu Badmus</p>
+                <p class="text-xl font-semibold">
+                  <span>$</span>78,300<span>.00</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment section  -->
+          <div class="md:flex gap-6 hidden xl:flex-col xl:gap-0">
+            <!-- Send Money  -->
+            <div>
+              <div class="space-y-6 xl:mt-40">
+                <div class="flex items-baseline justify-between">
+                  <h1 class="text-black text-2xl font-bold">Send money to</h1>
+                  <p class="text-blue-700">view all</p>
+                </div>
+                <div class="grid grid-cols-5 gap-3 space-y-4 justify-between">
+                  <div class="text-center">
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt=""
+                    />
+                    <p>john</p>
+                  </div>
+                  <div class="text-center">
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt=""
+                    />
+                    <p>john</p>
+                  </div>
+                  <div class="text-center">
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt=""
+                    />
+                    <p>john</p>
+                  </div>
+                  <div class="text-center">
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt=""
+                    />
+                    <p>Aaron</p>
+                  </div>
+                  <div class="text-center">
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt=""
+                    />
+                    <p>john</p>
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <input
+                    placeholder="Amount"
+                    class="inpStyle text-black text-xl font-medium inpHov w-[80%] bg-blue-100 focus:bg-blue-100"
+                    type="text"
+                  />
+                  <div
+                    class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">
+                      arrow_right_alt
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Make Payment -->
+            <div class="xl:mt-15 hidden xl:block">
+              <button
+                class="buttonStyle bg-orange-500 py-4 md:px-2 text-lg text-white w-full"
+              >
+                Make a payment
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Second section -->
-      <div class="px-13 pr-16 space-y-13 h-[100vh] bg-gray-50">
-        <header class="flex items-center justify-between pt-7">
+      <div
+        class="px-13 max-[426px]:p-2 max-md:px-5 max-xl:px-8 pr-16 space-y-13 h-full xl:bg-gray-50 relative"
+      >
+        <header class="xl:flex hidden items-center justify-between pt-7">
+          <div class="flex xl:hidden gap-3 items-center">
+            <span
+              class="material-symbols-outlined text-4xl font-medium text-blue-700"
+            >
+              account_balance
+            </span>
+            <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
+          </div>
           <nav class="text-lg font-semibold flex gap-12 md:gap-17">
-            <a class="active:underli" href="">Dashboard</a
+            <a class="border-b-3 border-blue-600" href="./dashboard.html"
+              >Dashboard</a
             ><a href="">Payments</a><a href="">Transactions</a
-            ><a href="">Profile</a>
+            ><a href="./profile.html">Profile</a>
           </nav>
           <!-- profile section  -->
-          <div class="flex gap-4 items-center">
-            <span>mes</span>
-            <span>not</span>
-            <a href="">
-              <div>
+          <div class="flex gap-8 items-center">
+            <span
+              class="material-symbols-outlined text-gray-500 cursor-pointer"
+            >
+              mail
+            </span>
+            <span
+              class="material-symbols-outlined text-gray-500 cursor-pointer"
+            >
+              notifications
+            </span>
+
+            <a href="#profile">
+              <div id="profile-icon">
                 <img
-                  class="w-12 h-12 object-cover rounded-full"
+                  class="w-12 h-12 object-cover cursor-pointer rounded-full"
                   src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
                   alt=""
                 />
@@ -147,99 +224,104 @@
 
         <section class="space-y-8">
           <div class="flex justify-between">
-            <h1 class="text-2xl font-bold">
+            <h1 class="text-xl md:text-2xl font-bold">
               <span class="text-blue-400">Account</span> Overview
             </h1>
-            <div class="flex gap-8 font-semibold">
+            <div class="text-sm hidden sm:flex gap-8 font-semibold">
               <p>Day</p>
               <p>Week</p>
               <p>Month</p>
               <p>Year</p>
             </div>
+            <div class="sm:hidden">
+              <span class="material-symbols-outlined"> menu </span>
+            </div>
           </div>
           <!-- account balance  -->
-          <div class="flex font-semibold justify-between w-[80%] md:w-[60%]">
+          <div
+            class="flex max-sm:flex-wrap max-sm:gap-3 text-xl md:text-3xl font-bold md:font-semibold justify-between w-[95%] md:w-[85%] lg:w-[70%] 2xl:[60%]"
+          >
             <!-- current balance -->
             <div>
               <p class="text-sm text-gray-400">Current balance</p>
-              <p class="text-3xl text-blue-400">$ <span>124,000</span>.00</p>
+              <p class="text-blue-400">$ <span>124,000</span>.00</p>
             </div>
             <!-- income -->
             <div>
               <p class="text-sm text-gray-400">Income</p>
-              <p class="text-3xl text-green-400">$ <span>124,000</span>.00</p>
+              <p class="text-green-400">$ <span>124,000</span>.00</p>
             </div>
             <!-- Outcome -->
             <div>
               <p class="text-sm text-gray-400">Outcome</p>
-              <p class="text-3xl text-red-400">$ <span>124,000</span>.00</p>
+              <p class="text-red-400">$ <span>124,000</span>.00</p>
             </div>
           </div>
           <div
-            class="h-[300px] border justify-center items-center flex text-4xl"
+            class="h-[300px] rounded-xl border justify-center items-center flex text-4xl"
           >
             Charttt!!!
           </div>
         </section>
-        <section>
-          <div class="flex justify-between py-4">
-            <h1 class="text-2xl font-bold">
+        <section class="bg-gray-100 rounded-xl p-3">
+          <div class="flex items-center justify-between py-4">
+            <h1 class="text-2xl max-[442px]:text-xl font-bold">
               <span class="text-blue-400">Account</span> Transactions
             </h1>
-            <a class="text-blue-400" href="">show all</a>
+            <a class="text-blue-400 max-[442px]:text-sm" href="">show all</a>
           </div>
-          <div class="h-[230px] overflow-y-auto">
-            <table class="w-full space-y-4">
+          <div class="overflow-x-scroll text-nowrap lg:overflow-hidden">
+            <table class="w-full">
               <thead class="">
                 <tr class="text-gray-500 text-sm">
-                  <td class="w-[40%]">Description</td>
-                  <td class="w-[17%]">Type</td>
-                  <td class="w-[17%]">Card</td>
-                  <td class="w-[17%]">Date</td>
-                  <td class="w-[8%] text-end">Amount</td>
+                  <td class="w-[40%] border px-3">Description</td>
+                  <td class="w-[17%] border px-3">Type</td>
+                  <td class="w-[17%] border px-3">Card</td>
+                  <td class="w-[17%] border px-3">Date</td>
+                  <td class="w-[8%] border px-3 text-end">Amount</td>
                 </tr>
               </thead>
               <tbody class="text-lg font-semibold">
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
                 <tr>
-                  <td class="py-3">Mobile Connection</td>
-                  <td>Services</td>
-                  <td>**** 0990</td>
-                  <td>Today, 1241</td>
+                  <td class="px-3 py-2">Mobile Connection</td>
+                  <td class="px-3">Services</td>
+                  <td class="px-3">**** 0990</td>
+                  <td class="px-3">Today, 1241</td>
                   <td class="text-end">$ 40</td>
                 </tr>
               </tbody>
@@ -248,5 +330,64 @@
         </section>
       </div>
     </div>
+    <!-- profilepop  -->
+    <div
+      id="miniprofiledrop"
+      class="shadow-xl rounded-lg w-[350px] h-[430px] hidden absolute right-15 top-23 bg-white space-y-3 px-8 py-4"
+    >
+      <div class="flex justify-center relative items-center">
+        <h1 class="text-2xl font-semibold">Profile</h1>
+        <a class="absolute right-0 top-2" href="">
+          <span
+            id="close-icon"
+            class="material-symbols-outlined cursor-pointer"
+          >
+            close
+          </span>
+        </a>
+      </div>
+      <div class="flex justify-center">
+        <img
+          class="w-20 h-20 rounded-full object-cover flex items-center"
+          src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+          alt=""
+        />
+      </div>
+      <div>
+        <p class="text-center font-semibold text-lg">Olamide Olamide</p>
+        <p class="text-center font-normal">Account No: <span>****2398</span></p>
+      </div>
+      <!-- second ection  -->
+      <div class="border-t py-2 space-y-1">
+        <div class="flex justify-between">
+          <p>Account Type:</p>
+          <span class="font-semibold">Savings</span>
+        </div>
+        <div class="flex justify-between">
+          <p>Balance:</p>
+          <span class="font-semibold text-blue-600">$<span>4,892</span> </span>
+        </div>
+        <div class="flex justify-between">
+          <p>Status:</p>
+          <span class="font-semibold text-green-600">Verified</span>
+        </div>
+      </div>
+      <!-- third section  -->
+      <div class="border-t py-2 space-y-1">
+        <a href="./profile.html">
+          <button
+            class="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2 cursor-pointer rounded-lg"
+          >
+            View Profile
+          </button>
+        </a>
+        <button
+          class="w-full font-medium hover:bg-gray-100 text-red-700 px-3 py-2 cursor-pointer rounded-lg"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+    <script src="./dashboard.js" type="module"></script>
   </body>
 </html>
