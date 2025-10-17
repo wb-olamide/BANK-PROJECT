@@ -42,6 +42,25 @@ const auth = getAuth(app);
 const DB = getFirestore(app);
 const usersColRef = collection(DB, "USERS");
 
+let num = Math.random();
+console.log(num);
+
+let accountNum = String(num).slice(3, 13);
+
+// Card Number
+
+function cardSplitRegex(str) {
+  return str.replace(/(.{4})(?=.)/g, "$1 ");
+}
+
+const cardgenerate = String(num).slice(2, 18);
+
+const cardNum = cardSplitRegex(cardgenerate);
+console.log(cardNum);
+
+// let Number = String(num.slice).slice(3, 13);
+// console.log(Number);
+
 const handleSignup = async () => {
   signupBtn.textContent = "Signing Up...";
   try {
@@ -60,6 +79,8 @@ const handleSignup = async () => {
         firstName: firstNameEl.value,
         lastName: lastNameEl.value,
         email: emailEl.value,
+        accountNumber: accountNum,
+        cardNumber: cardNum,
       });
       alert("Account Created Succesfully");
       window.location.href = "./signin.html";
@@ -91,7 +112,6 @@ const handleSignup = async () => {
     signupBtn.textContent = "Sign Up";
   }
 };
-
 
 signupFormEl.addEventListener("submit", (e) => {
   e.preventDefault();

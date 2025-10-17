@@ -54,7 +54,7 @@
             </div>
 
             <a class="max-[425px]:hidden" href="#profile">
-              <div id="profile-icon ">
+              <div class="profile-icon">
                 <img
                   class="w-12 h-12 object-cover cursor-pointer rounded-full"
                   src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -79,8 +79,8 @@
               class="p-5 min-w-[320px] max-w-[320px] rounded-xl border space-y-4 text-white bg-gradient-to-r from-blue-500 to-indigo-600"
             >
               <div class="flex justify-between items-baseline">
-                <p class="text-lg font-semibold">Wells Fargo</p>
-                <p class="font-bold text-xl">MASTERCARD</p>
+                <p id="cardBankName" class="text-lg font-semibold">WBEE BANK</p>
+                <p id="cardBankType" class="font-bold text-xl">MASTERCARD</p>
               </div>
               <div class="flex justify-between items-center">
                 <img
@@ -88,11 +88,11 @@
                   src="./media/card_chip-Nbg.png "
                   alt=""
                 />
-                <span class="text-lg">1223 1223 1233 1223</span>
+                <span id="card-num" class="text-lg"></span>
               </div>
               <div class="flex justify-between items-baseline">
-                <p class="font-normal">Waliu Badmus</p>
-                <p class="text-xl font-semibold">
+                <p id="" class="font-normal accountHolderName"></p>
+                <p id="cardBalance" class="text-xl font-semibold">
                   <span>$</span>78,300<span>.00</span>
                 </p>
               </div>
@@ -211,7 +211,7 @@
             </span>
 
             <a href="#profile">
-              <div id="profile-icon">
+              <div class="profile-icon">
                 <img
                   class="w-12 h-12 object-cover cursor-pointer rounded-full"
                   src="https://tse4.mm.bing.net/th/id/OIP.cEie_pmgXcu1Blpul3mrfgHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -258,9 +258,9 @@
             </div>
           </div>
           <div
-            class="h-[300px] rounded-xl border justify-center items-center flex text-4xl"
+            class="h-[300px] rounded-xl shadow-sm justify-center items-center flex text-4xl"
           >
-            Charttt!!!
+            <canvas id="transactionChart"></canvas>
           </div>
         </section>
         <section class="bg-gray-100 rounded-xl p-3">
@@ -270,61 +270,23 @@
             </h1>
             <a class="text-blue-400 max-[442px]:text-sm" href="">show all</a>
           </div>
-          <div class="overflow-x-scroll text-nowrap lg:overflow-hidden">
+          <div
+            class="overflow-auto max-h-[220px] text-nowrap lg:overflow-x-hidden"
+          >
             <table class="w-full">
               <thead class="">
                 <tr class="text-gray-500 text-sm">
-                  <td class="w-[40%] border px-3">Description</td>
-                  <td class="w-[17%] border px-3">Type</td>
-                  <td class="w-[17%] border px-3">Card</td>
-                  <td class="w-[17%] border px-3">Date</td>
-                  <td class="w-[8%] border px-3 text-end">Amount</td>
+                  <td class="w-[40%] px-3">Description</td>
+                  <td class="w-[17%] px-3">Type</td>
+                  <td class="w-[17%] px-3">Date</td>
+                  <td class="w-[10%] px-3">Amount</td>
+                  <td class="w-[14%] px-3">Status</td>
                 </tr>
               </thead>
-              <tbody class="text-lg font-semibold">
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-                <tr>
-                  <td class="px-3 py-2">Mobile Connection</td>
-                  <td class="px-3">Services</td>
-                  <td class="px-3">**** 0990</td>
-                  <td class="px-3">Today, 1241</td>
-                  <td class="text-end">$ 40</td>
-                </tr>
-              </tbody>
+              <tbody
+                id="transactionDisplay"
+                class="text-lg font-semibold"
+              ></tbody>
             </table>
           </div>
         </section>
@@ -354,8 +316,13 @@
         />
       </div>
       <div>
-        <p class="text-center font-semibold text-lg">Olamide Olamide</p>
-        <p class="text-center font-normal">Account No: <span>****2398</span></p>
+        <p
+          id=""
+          class="accountHolderName text-center font-semibold text-lg"
+        ></p>
+        <p class="text-center font-normal">
+          Account No: <span id="account-num"></span>
+        </p>
       </div>
       <!-- second ection  -->
       <div class="border-t py-2 space-y-1">
@@ -369,7 +336,10 @@
         </div>
         <div class="flex justify-between">
           <p>Status:</p>
-          <span class="font-semibold text-green-600">Verified</span>
+          <span
+            id="verified-status"
+            class="font-semibold text-green-600"
+          ></span>
         </div>
       </div>
       <!-- third section  -->
@@ -388,6 +358,7 @@
         </button>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./dashboard.js" type="module"></script>
   </body>
 </html>
