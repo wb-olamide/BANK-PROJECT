@@ -78,9 +78,13 @@ const handleSignup = async () => {
       await setDoc(newUserDocRef, {
         firstName: firstNameEl.value,
         lastName: lastNameEl.value,
+        fullName: firstNameEl.value + " " + lastNameEl.value,
         email: emailEl.value,
-        accountNumber: accountNum,
+        phoneNumber: "",
+        DateofBirth: "",
+        profilePicture: "",
         cardNumber: cardNum,
+        accountNumber: accountNum,
       });
       alert("Account Created Succesfully");
       window.location.href = "./signin.html";

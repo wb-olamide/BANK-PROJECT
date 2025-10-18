@@ -122,7 +122,7 @@ const gettransactionsHistory = async () => {
 
     transactionDetails.forEach((value, index) => {
       transactionDisplayEl.innerHTML += `
-                <tr>
+                <tr class= "even:bg-gray-50 ">
                   <td class="px-3 py-2">${value.Description}</td>
                   <td class="px-3">${value.Type}</td>
                   <td class="px-3">${value.Date}</td>
