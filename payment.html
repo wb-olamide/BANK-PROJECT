@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bank Dashboard</title>
+    <title>Payment</title>
     <link rel="stylesheet" href="./src/output.css" />
     <link
       rel="stylesheet"
@@ -14,7 +14,7 @@
     <div id="pagecontent" class="xl:grid xl:grid-cols-[auto_1fr] flex-col">
       <!-- first section    -->
       <div
-        class="p-8 max-[425px]:shadow-sm max-[425px]:p-2 max-md:px-5 max-xl:px-8 max-[425px]:py-4 max-[425px]:mb-3 max-[425px]:space-y-0 space-y-5 xl:space-y-10 xl:bg-blue-50 lg:h-full"
+        class="p-8 max-[425px]:shadow-sm max-[425px]:p-2 max-md:px-5 max-xl:px-8 max-[425px]:py-4 max-[425px]:mb-3 max-[425px]:space-y-0 space-y-5 xl:space-y-10 xl:bg-blue-50 lg:h-[100vh]"
       >
         <div class="flex justify-between items-center">
           <div class="flex gap-3 items-center">
@@ -28,9 +28,9 @@
           <nav
             class="text-lg hidden md:flex xl:hidden font-semibold gap-8 lg:gap-12 md:gap-17"
           >
-            <a class="border-b-3 border-blue-600" href="./dashboard.html"
-              >Dashboard</a
-            ><a href="./payment.html">Payments</a
+            <a href="./dashboard.html">Dashboard</a
+            ><a class="border-b-3 border-blue-600" href="./payment.html"
+              >Payments</a
             ><a href="./transaction.html">Transactions</a
             ><a class="hidden lg:block" href="./profile.html">Profile</a>
           </nav>
@@ -193,11 +193,23 @@
             <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
           </div>
           <nav class="text-lg font-semibold flex gap-12 md:gap-17">
-            <a class="border-b-3 border-blue-600" href="./dashboard.html"
+            <a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./dashboard.html"
               >Dashboard</a
-            ><a href="./payment.html">Payments</a
-            ><a href="./transaction.html">Transactions</a
-            ><a href="./profile.html">Profile</a>
+            ><a
+              class="border-b-3 border-blue-600 text-blue-600"
+              href="./payment.html"
+              >Payments</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./transaction.html"
+              >Transactions</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./profile.html"
+              >Profile</a
+            >
           </nav>
           <!-- profile section  -->
           <div class="flex gap-8 items-center">
@@ -223,77 +235,170 @@
             </a>
           </div>
         </header>
+        <!-- payment section  -->
+        <section>
+          <main
+            class="max-w-4xl mx-auto mt-8 p-6 bg-white rounded-2xl shadow-md"
+          >
+            <h2 class="text-xl font-semibold mb-6 text-gray-900">
+              Make a Payment
+            </h2>
 
-        <section class="space-y-8">
-          <div class="flex justify-between">
-            <h1 class="text-xl md:text-2xl font-bold">
-              <span class="text-blue-400">Account</span> Overview
-            </h1>
-            <div class="text-sm hidden sm:flex gap-8 font-semibold">
-              <p>Day</p>
-              <p>Week</p>
-              <p>Month</p>
-              <p>Year</p>
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200 mb-6">
+              <button
+                id="transferTab"
+                class="tab-btn text-blue-600 border-b-2 border-blue-600 pb-2 px-4 font-medium"
+              >
+                Transfer
+              </button>
+              <button
+                id="airtimeTab"
+                class="tab-btn text-gray-500 hover:text-blue-600 pb-2 px-4"
+              >
+                Airtime
+              </button>
+              <button
+                id="dataTab"
+                class="tab-btn text-gray-500 hover:text-blue-600 pb-2 px-4"
+              >
+                Data
+              </button>
             </div>
-            <div class="sm:hidden">
-              <span class="material-symbols-outlined"> menu </span>
-            </div>
-          </div>
-          <!-- account balance  -->
-          <div
-            class="flex max-sm:flex-wrap max-sm:gap-3 text-xl md:text-3xl font-bold md:font-semibold justify-between w-[95%] md:w-[85%] lg:w-[70%] 2xl:[60%]"
-          >
-            <!-- current balance -->
-            <div>
-              <p class="text-sm text-gray-400">Current balance</p>
-              <p class="text-blue-400">$ <span>124,000</span>.00</p>
-            </div>
-            <!-- income -->
-            <div>
-              <p class="text-sm text-gray-400">Income</p>
-              <p class="text-green-400">$ <span>124,000</span>.00</p>
-            </div>
-            <!-- Outcome -->
-            <div>
-              <p class="text-sm text-gray-400">Outcome</p>
-              <p class="text-red-400">$ <span>124,000</span>.00</p>
-            </div>
-          </div>
-          <div
-            class="h-[300px] rounded-xl shadow-sm justify-center items-center flex text-4xl"
-          >
-            <canvas id="transactionChart"></canvas>
-          </div>
-        </section>
-        <section class="bg-gray-100 rounded-xl p-3">
-          <div class="flex items-center justify-between py-4">
-            <h1 class="text-2xl max-[442px]:text-xl font-bold">
-              <span class="text-blue-400">Account</span> Transactions
-            </h1>
-            <a class="text-blue-400 max-[442px]:text-sm" href="">show all</a>
-          </div>
-          <div
-            class="overflow-auto max-h-[220px] text-nowrap lg:overflow-x-hidden"
-          >
-            <table class="w-full">
-              <thead class="">
-                <tr class="text-gray-500 text-sm">
-                  <td class="w-[40%] px-3">Description</td>
-                  <td class="w-[17%] px-3">Type</td>
-                  <td class="w-[17%] px-3">Date</td>
-                  <td class="w-[10%] px-3">Amount</td>
-                  <td class="w-[14%] px-3">Status</td>
-                </tr>
-              </thead>
-              <tbody
-                id="transactionDisplay"
-                class="text-lg font-semibold"
-              ></tbody>
-            </table>
-          </div>
+
+            <!-- Transfer Section -->
+            <section id="transferSection" class="payment-section block">
+              <label class="block mb-3">
+                <span class="text-sm font-medium"
+                  >Recipient Account Number</span
+                >
+                <input
+                  type="text"
+                  maxlength="10"
+                  id="transferAcc"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter account number"
+                />
+                <p
+                  id="acc-confirm-name"
+                  class="px-2 text-green-600 text-sm font-semibold"
+                ></p>
+              </label>
+
+              <label class="block mb-3">
+                <span class="text-sm font-medium">Amount</span>
+                <input
+                  type="number"
+                  id="transferAmount"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter amount"
+                />
+              </label>
+
+              <label class="block mb-6">
+                <span class="text-sm font-medium">Description</span>
+                <input
+                  type="text"
+                  id="transferDesc"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Optional description"
+                />
+              </label>
+
+              <button
+                id="transferBtn"
+                class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+              >
+                Proceed
+              </button>
+            </section>
+
+            <!-- Airtime Section -->
+            <section id="airtimeSection" class="payment-section hidden">
+              <label class="block mb-3">
+                <span class="text-sm font-medium">Phone Number</span>
+                <input
+                  type="text"
+                  id="airtimeNumber"
+                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter phone number"
+                />
+              </label>
+
+              <label class="block mb-6">
+                <span class="text-sm font-medium">Amount</span>
+                <input
+                  type="number"
+                  id="airtimeAmount"
+                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter amount"
+                />
+              </label>
+
+              <button
+                id="airtimeBtn"
+                class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+              >
+                Buy Airtime
+              </button>
+            </section>
+
+            <!-- Data Section -->
+            <section id="dataSection" class="payment-section hidden">
+              <label class="block mb-3">
+                <span class="text-sm font-medium">Phone Number</span>
+                <input
+                  type="text"
+                  id="dataNumber"
+                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter phone number"
+                />
+              </label>
+
+              <label class="block mb-6">
+                <span class="text-sm font-medium">Select Plan</span>
+                <select
+                  id="dataPlan"
+                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                >
+                  <option value="">Select a plan</option>
+                  <option value="500MB">500MB - ₦150</option>
+                  <option value="1GB">1GB - ₦300</option>
+                  <option value="2GB">2GB - ₦500</option>
+                </select>
+              </label>
+
+              <button
+                id="dataBtn"
+                class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+              >
+                Buy Data
+              </button>
+            </section>
+          </main>
         </section>
       </div>
     </div>
+
+    <!-- Pin Input popup  -->
+    <!-- <section id="airtimeSection" class="payment-section hidden">
+      <label class="block mb-3">
+        <span class="text-sm font-medium">Input your 4 digit Pin</span>
+        <input
+          type="text"
+          id="airtimeNumber"
+          class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          placeholder="Enter phone number"
+        />
+      </label>
+
+      <button
+        id="airtimeBtn"
+        class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+      >
+        Make Payment
+      </button>
+    </section> -->
     <!-- profilepop  -->
     <div
       id="miniprofiledrop"
@@ -360,7 +465,39 @@
         </button>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./dashboard.js" type="module"></script>
+    <!-- Pin confirmation Pop up -->
+    <div
+      id="pinModal"
+      class="fixed hidden inset-0 bg-opacity-40 items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-2xl p-6 w-80 shadow-lg text-center">
+        <h2 class="text-lg font-semibold mb-3">Confirm Your PIN</h2>
+        <p class="text-gray-500 text-sm mb-4">
+          Enter your 4-digit transaction PIN to proceed
+        </p>
+        <input
+          id="pinInput"
+          type="password"
+          maxlength="4"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 text-center tracking-widest text-xl font-semibold"
+          placeholder="••••"
+        />
+        <div class="mt-5 flex justify-between">
+          <button
+            id="cancelPinBtn"
+            class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+          >
+            Cancel
+          </button>
+          <button
+            id="confirmPinBtn"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./payment.js" type="module"></script>
   </body>
 </html>

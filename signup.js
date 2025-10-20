@@ -85,6 +85,9 @@ const handleSignup = async () => {
         profilePicture: "",
         cardNumber: cardNum,
         accountNumber: accountNum,
+        balance: 10000,
+        totalIncome: "",
+        totalOutcome: "",
       });
       alert("Account Created Succesfully");
       window.location.href = "./signin.html";

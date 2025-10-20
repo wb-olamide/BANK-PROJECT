@@ -6,6 +6,7 @@ const accountNumberEl = document.getElementById("account-num");
 const cardNumberEl = document.getElementById("card-num");
 const verifiedStatus = document.getElementById("verified-status");
 const transactionDisplayEl = document.getElementById("transactionDisplay");
+const picEl = document.querySelectorAll(".profile-pic");
 
 let profileData;
 let accountHolderNameEl = document.querySelectorAll(".accountHolderName");
@@ -33,6 +34,8 @@ import {
   addDoc,
   getDocs,
   serverTimestamp,
+  query,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -76,6 +79,16 @@ onAuthStateChanged(auth, async (user) => {
       // console.log("Not Verified");
       verifiedStatus.textContent = "Not Verified";
     }
+    let currentProfileImage = profileData.profilePicture || "";
+
+    if (currentProfileImage) {
+      picEl.forEach((pic) => {
+        pic.src = currentProfileImage;
+      });
+    }
+  } else {
+    alert("Session Expired! Redirecting....");
+    window.location.href = "./signin.html";
   }
 });
 const UserUID = localStorage.getItem("uid");
@@ -88,36 +101,38 @@ let direction;
 //   direction = "Outgoing";
 // }
 
-const addTransactionsHistory = async () => {
-  try {
-    console.log(UserUID);
-    const transactionDetails = {
-      Description: "Money transfer from WBEE",
-      Type: "Bank Transfer",
-      Date: new Date().toLocaleDateString(),
-      Amount: 200,
-      Status: "Pending", // or "Pending", "Failed"
-      createdAt: serverTimestamp(),
-      Direction: "direction",
-    };
-    const transactionsColRef = collection(DB, "USERS", UserUID, "transactions");
-    const docRef = await addDoc(transactionsColRef, transactionDetails);
-    console.log(docRef);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const addTransactionsHistory = async () => {
+//   try {
+//     console.log(UserUID);
+//     const transactionDetails = {
+//       Description: "Money transfer from WBEE",
+//       Type: "Bank Transfer",
+//       Date: new Date().toLocaleDateString(),
+//       Amount: 200,
+//       Status: "Pending", // or "Pending", "Failed"
+//       createdAt: serverTimestamp(),
+//       Direction: "direction",
+//     };
+//     const transactionsColRef = collection(DB, "USERS", UserUID, "transactions");
+//     const docRef = await addDoc(transactionsColRef, transactionDetails);
+//     // console.log(docRef);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // addTransactionsHistory();
 const gettransactionsHistory = async () => {
   try {
-    const transactionsColRef = collection(DB, "USERS", UserUID, "transactions");
-    const querySnapShot = await getDocs(transactionsColRef);
+    const transactionsColRef = collection(DB, "USERS", UserUID, "TRANSACTIONS");
+    const q = query(transactionsColRef, orderBy("createdAt", "desc"));
+    const querySnapShot = await getDocs(q);
     const transactionDetails = [];
+    console.log(querySnapShot);
 
     querySnapShot.forEach((doc) => {
       // const transactionDetails = doc.data();
       transactionDetails.push(doc.data());
-      // console.log(transactionDetails);
+      console.log(transactionDetails);
     });
 
     transactionDetails.forEach((value, index) => {
@@ -129,7 +144,7 @@ const gettransactionsHistory = async () => {
                   <td class="px-3">$ ${value.Amount}</td>
                   <td class="px-3  ${getStatusColor(value.Status)} ">${
         value.Status
-      }</td>
+      } </td>
                 </tr>
                 
       `;
@@ -159,7 +174,7 @@ const ctx = document.getElementById("transactionChart");
 const labels = [];
 const amounts = [];
 try {
-  const chartColRef = collection(DB, "USERS", UserUID, "transactions");
+  const chartColRef = collection(DB, "USERS", UserUID, "TRANSACTIONS");
   const chartquerySnapShot = await getDocs(chartColRef);
   const chartDetails = [];
 
@@ -174,8 +189,8 @@ try {
 } catch (error) {
   console.log(error);
 }
-console.log(amounts);
-console.log(labels);
+// console.log(amounts);
+// console.log(labels);
 const transactionChart = new Chart(ctx, {
   type: "line",
   data: {

@@ -145,16 +145,25 @@ saveProfileBtnEl.addEventListener("click", async () => {
     return;
   } else {
     try {
+      textError.textContent = "";
+
       saveProfileBtnEl.classList.add("cursor-progress");
       saveProfileBtnEl.textContent = "Updating Changes...";
       const docRef = doc(usersColRef, userUID);
       await updateDoc(docRef, newProfileData);
-      alert("Changes Saved");
+      alert("Profile updated successfully!");
     } catch (error) {
       console.log(error);
       if (error) {
-        textError.textContent = "Error, Failed to save changes";
-        return;
+        console.log(error.code);
+        const errorCode = error.code;
+        if (errorCode === "invalid-argument") {
+          textError.textContent =
+            "Error! Profile picture should not be bigger that 1mb";
+        } else {
+          textError.textContent = "Error, Failed to save changes";
+          return;
+        }
       }
     } finally {
       saveProfileBtnEl.textContent = "Save Changes";
@@ -162,4 +171,3 @@ saveProfileBtnEl.addEventListener("click", async () => {
     }
   }
 });
-
