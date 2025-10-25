@@ -93,8 +93,8 @@
               </div>
               <div class="flex justify-between items-baseline">
                 <p id="" class="font-normal accountHolderName"></p>
-                <p id="cardBalance" class="text-xl font-semibold">
-                  <span>$</span>78,300<span>.00</span>
+                <p class="text-xl font-semibold">
+                  $ <span id="cardBalance">0</span>
                 </p>
               </div>
             </div>
@@ -253,6 +253,12 @@
                 Transfer
               </button>
               <button
+                id="cardTab"
+                class="tab-btn text-gray-500 hover:text-blue-600 pb-2 px-4"
+              >
+                Card
+              </button>
+              <button
                 id="airtimeTab"
                 class="tab-btn text-gray-500 hover:text-blue-600 pb-2 px-4"
               >
@@ -318,9 +324,10 @@
               <label class="block mb-3">
                 <span class="text-sm font-medium">Phone Number</span>
                 <input
-                  type="text"
+                  type="number"
                   id="airtimeNumber"
-                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  maxlength="11"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
                   placeholder="Enter phone number"
                 />
               </label>
@@ -330,7 +337,7 @@
                 <input
                   type="number"
                   id="airtimeAmount"
-                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
                   placeholder="Enter amount"
                 />
               </label>
@@ -350,7 +357,7 @@
                 <input
                   type="text"
                   id="dataNumber"
-                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
                   placeholder="Enter phone number"
                 />
               </label>
@@ -359,7 +366,7 @@
                 <span class="text-sm font-medium">Select Plan</span>
                 <select
                   id="dataPlan"
-                  class="mt-1 w-full border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
                 >
                   <option value="">Select a plan</option>
                   <option value="500MB">500MB - ₦150</option>
@@ -373,6 +380,25 @@
                 class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
               >
                 Buy Data
+              </button>
+            </section>
+            <!-- Card Section  -->
+            <section id="cardSection" class="payment-section hidden">
+              <label class="block mb-6">
+                <span class="text-sm font-medium">Enter Amount</span>
+                <input
+                  type="number"
+                  id="cardAmount"
+                  class="mt-1 w-full border-gray-400 border rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter amount"
+                />
+              </label>
+
+              <button
+                id="cardBtn"
+                class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+              >
+                Fund Card
               </button>
             </section>
           </main>
@@ -466,7 +492,7 @@
       </div>
     </div>
     <!-- Pin confirmation Pop up -->
-    <div
+    <form
       id="pinModal"
       class="fixed hidden inset-0 bg-opacity-40 items-center justify-center z-50"
     >
@@ -480,24 +506,26 @@
           type="password"
           maxlength="4"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 text-center tracking-widest text-xl font-semibold"
-          placeholder="••••"
+          placeholder=""
         />
         <div class="mt-5 flex justify-between">
           <button
             id="cancelPinBtn"
+            type="button"
             class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
           >
             Cancel
           </button>
           <button
             id="confirmPinBtn"
+            type="submit"
             class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
           >
             Confirm
           </button>
         </div>
       </div>
-    </div>
+    </form>
     <script src="./payment.js" type="module"></script>
   </body>
 </html>

@@ -7,6 +7,10 @@ const cardNumberEl = document.getElementById("card-num");
 const verifiedStatus = document.getElementById("verified-status");
 const transactionDisplayEl = document.getElementById("transactionDisplay");
 const picEl = document.querySelectorAll(".profile-pic");
+const balanceEl = document.querySelectorAll(".account-balance");
+const incomeEl = document.getElementById("account-income");
+const outcomeEl = document.getElementById("account-outcome");
+const cardBalance = document.getElementById("cardBalance");
 
 let profileData;
 let accountHolderNameEl = document.querySelectorAll(".accountHolderName");
@@ -72,6 +76,14 @@ onAuthStateChanged(auth, async (user) => {
 
     accountNumberEl.textContent = `${profileData.accountNumber}`;
     cardNumberEl.textContent = `${profileData.cardNumber}`;
+    incomeEl.textContent = profileData.totalIncome.toLocaleString();
+    outcomeEl.textContent = profileData.totalOutcome.toLocaleString();
+    cardBalance.textContent = profileData.cardBalance.toLocaleString();
+    // let formatBalance = profileData.balance;
+    balanceEl.forEach((el) => {
+      el.textContent = profileData.balance.toLocaleString();
+    });
+
     if (user.emailVerified) {
       // console.log("Verified");
       verifiedStatus.textContent = "Verified";
@@ -79,6 +91,7 @@ onAuthStateChanged(auth, async (user) => {
       // console.log("Not Verified");
       verifiedStatus.textContent = "Not Verified";
     }
+
     let currentProfileImage = profileData.profilePicture || "";
 
     if (currentProfileImage) {
@@ -132,7 +145,7 @@ const gettransactionsHistory = async () => {
     querySnapShot.forEach((doc) => {
       // const transactionDetails = doc.data();
       transactionDetails.push(doc.data());
-      console.log(transactionDetails);
+      // console.log(transactionDetails);
     });
 
     transactionDetails.forEach((value, index) => {
@@ -172,19 +185,30 @@ gettransactionsHistory();
 // chart Display
 const ctx = document.getElementById("transactionChart");
 const labels = [];
-const amounts = [];
+const outAmounts = [];
+const inAmounts = [];
 try {
-  const chartColRef = collection(DB, "USERS", UserUID, "TRANSACTIONS");
-  const chartquerySnapShot = await getDocs(chartColRef);
+  // const chartColRef = collection(DB, "USERS", UserUID, "TRANSACTIONS");
+  // const chartquerySnapShot = await getDocs(chartColRef);
+  const transactionsColRef = collection(DB, "USERS", UserUID, "TRANSACTIONS");
+  const q = query(transactionsColRef, orderBy("createdAt", "desc"));
+  const chartquerySnapShot = await getDocs(q);
   const chartDetails = [];
 
   chartquerySnapShot.forEach((doc) => {
     const chartData = doc.data();
+    chartData.Direction == "outgoing"
+      ? outAmounts.unshift(chartData.Amount)
+      : inAmounts.unshift(chartData.Amount);
 
     chartDetails.push(doc.data());
-    labels.push(chartData.Date);
-    amounts.push(chartData.Amount);
+    labels.unshift(chartData.Date);
+    // console.log(labels);
+
+    // amounts.push(chartData.Amount);
     // console.log(chartDetails);
+    // console.log(outAmounts);
+    // console.log(inAmounts);
   });
 } catch (error) {
   console.log(error);
@@ -198,7 +222,7 @@ const transactionChart = new Chart(ctx, {
     datasets: [
       {
         label: "Outgoing",
-        data: amounts,
+        data: outAmounts,
         tension: 0.4,
         borderColor: "#F43F5E", // Tailwind rose-500
         backgroundColor: "rgba(244,63,94,0.12)",
@@ -206,9 +230,7 @@ const transactionChart = new Chart(ctx, {
       },
       {
         label: "Incoming",
-        data: [
-          500, 200, 700, 500, 200, 700, 200, 400, 500, 200, 650, 500, 500, 650,
-        ],
+        data: inAmounts,
         tension: 0.4,
         borderColor: "#2563EB",
         backgroundColor: "rgba(37,99,235,0.12)",

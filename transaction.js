@@ -2,6 +2,7 @@ const transactionDisplayEl = document.getElementById("transactionDisplay");
 const userUID = localStorage.getItem("uid");
 // console.log(userUID);
 if (!userUID) {
+  alert("Session Expired! Redirecting....");
   window.location.href = "./signin.html";
 }
 
@@ -12,6 +13,8 @@ import {
   collection,
   doc,
   getDocs,
+  query,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -34,13 +37,14 @@ const usersColRef = collection(DB, "USERS");
 
 const gettransactionsHistory = async () => {
   try {
-    const docRef = collection(DB, "USERS", userUID, "transactions");
-    const docSnapShot = await getDocs(docRef);
+    const docRef = collection(DB, "USERS", userUID, "TRANSACTIONS");
+    const q = query(docRef, orderBy("createdAt", "desc"));
+    const docSnapShot = await getDocs(q);
     const transactionDetails = [];
     docSnapShot.forEach((el) => {
-      const data = el.data();
+      // const data = el.data();
       transactionDetails.push(el.data());
-      console.log(transactionDetails);
+      // console.log(transactionDetails);
     });
 
     transactionDetails.forEach((value, index) => {
