@@ -502,6 +502,9 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
 
   if (!cardAmount.value) return alert("Please fill all required fields.");
   try {
+    if (accountPin == 1111) {
+      alert("Your default Pin is '1111'. Continue or edit in profile later.");
+    }
     showPinModal();
     // Handle Card Modal
     pinModal.addEventListener("submit", async (e) => {

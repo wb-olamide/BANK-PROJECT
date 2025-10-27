@@ -347,6 +347,9 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
+  .h-\[100vh\] {
+    height: 100vh;
+  }
   .h-\[300px\] {
     height: 300px;
   }
@@ -1268,6 +1271,11 @@
   .lg\:block {
     @media (width >= 64rem) {
       display: block;
+    }
+  }
+  .lg\:h-\[100vh\] {
+    @media (width >= 64rem) {
+      height: 100vh;
     }
   }
   .lg\:h-full {
