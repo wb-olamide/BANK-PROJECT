@@ -508,9 +508,16 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
             // console.log(recieversData);
           } catch (error) {
             console.log(error);
+          } finally {
+            confirmPinBtn.classList.remove(
+              "disabled",
+              "bg-gray-400",
+              "hover:bg-gray-400",
+              "cursor-not-allowed"
+            );
           }
         } else {
-          return alert("Incorrect Pin");
+          return alert("❌ Incorrect Pin");
         }
       });
   } catch (error) {
@@ -616,9 +623,16 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
           });
         } catch (error) {
           console.log(error);
+        } finally {
+          confirmPinBtn.classList.remove(
+            "disabled",
+            "bg-gray-400",
+            "hover:bg-gray-400",
+            "cursor-not-allowed"
+          );
         }
       } else {
-        return alert("Incorrect Pin");
+        return alert("❌ Incorrect Pin");
       }
     });
   } catch (error) {
