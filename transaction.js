@@ -1,4 +1,7 @@
 const transactionDisplayEl = document.getElementById("transactionDisplay");
+let accountHolderNameEl = document.getElementById("accountHolderName");
+const picEl = document.getElementById("profile-pic");
+
 const userUID = localStorage.getItem("uid");
 // console.log(userUID);
 if (!userUID) {
@@ -7,12 +10,16 @@ if (!userUID) {
 }
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 import {
   getFirestore,
   collection,
   doc,
   getDocs,
+  getDoc,
   query,
   orderBy,
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -34,6 +41,23 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const DB = getFirestore(app);
 const usersColRef = collection(DB, "USERS");
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    console.log(user);
+
+    let docRef = doc(usersColRef, user.uid);
+    let docSnapShot = await getDoc(docRef);
+    let profileData = docSnapShot.data();
+    console.log(profileData);
+
+    accountHolderNameEl.textContent = `${profileData.firstName} ${profileData.lastName}`;
+    picEl.src = profileData.profilePicture;
+  } else {
+    alert("Session Expired! Redirecting....");
+    window.location.href = "./signin.html";
+  }
+});
 
 const gettransactionsHistory = async () => {
   try {

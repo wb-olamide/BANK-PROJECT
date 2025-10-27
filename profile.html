@@ -22,9 +22,19 @@
           <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
         </div>
         <nav class="text-lg md:flex font-semibold gap-8 lg:gap-12 md:gap-17">
-          <a class="" href="./dashboard.html">Dashboard</a
-          ><a href="">Payments</a><a href="./transaction.html">Transactions</a
-          ><a class="border-b-3 border-blue-600" href="./profile.html"
+          <a
+            class="hover:text-blue-700 hover:animate-pulse"
+            href="./dashboard.html"
+            >Dashboard</a
+          ><a
+            class="hover:text-blue-700 hover:animate-pulse"
+            href="./payment.html"
+            >Payments</a
+          ><a
+            class="hover:text-blue-700 hover:animate-pulse"
+            href="./transaction.html"
+            >Transactions</a
+          ><a class="border-b-3 border-blue-600 text-blue-600" href="./profile.html"
             >Profile</a
           >
         </nav>
@@ -172,6 +182,17 @@
                 class="w-full cursor-not-allowed px-4 py-2 font-medium text-gray-800 border border-gray-300 rounded-xl bg-gray-50 outline-none"
               />
             </div>
+            <div>
+              <label class="block text-sm text-gray-500 mb-1">PIN</label>
+              <input
+                id="pinInp"
+                type="number"
+                maxlength="4"
+                placeholder="0000"
+                class="w-full px-4 py-2 font-medium text-gray-800 border border-gray-300 rounded-xl bg-gray-50 outline-none"
+              />
+              <p id="pin-error-text" class="p-1 text-red-500"></p>
+            </div>
           </div>
         </div>
         <!-- Security  -->
@@ -204,7 +225,7 @@
 
           <p class="mt-3 text-sm text-gray-500">
             Status:
-            <span id="status" class="text-green-600 font-medium">Verified</span>
+            <span id="status" class="text-green-600 font-medium">--</span>
           </p>
         </div>
         <!-- Support  -->
@@ -225,6 +246,7 @@
               Help Center
             </button>
             <button
+              id="logout"
               class="px-4 py-2 cursor-pointer bg-red-500 text-white rounded-xl hover:bg-red-600 transition"
             >
               Log Out

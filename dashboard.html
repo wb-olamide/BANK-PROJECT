@@ -28,11 +28,23 @@
           <nav
             class="text-lg hidden md:flex xl:hidden font-semibold gap-8 lg:gap-12 md:gap-17"
           >
-            <a class="border-b-3 border-blue-600" href="./dashboard.html"
+            <a
+              class="border-b-3 text-blue-600 border-blue-600"
+              href="./dashboard.html"
               >Dashboard</a
-            ><a href="./payment.html">Payments</a
-            ><a href="./transaction.html">Transactions</a
-            ><a class="hidden lg:block" href="./profile.html">Profile</a>
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./payment.html"
+              >Payments</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./transaction.html"
+              >Transactions</a
+            ><a
+              class="hidden hover:text-blue-700 hover:animate-pulse lg:block"
+              href="./profile.html"
+              >Profile</a
+            >
           </nav>
           <!-- profile section  -->
           <div class="flex xl:hidden gap-8 items-center">
@@ -193,11 +205,23 @@
             <h1 class="text-xl font-bold text-blue-700">WBEE</h1>
           </div>
           <nav class="text-lg font-semibold flex gap-12 md:gap-17">
-            <a class="border-b-3 border-blue-600" href="./dashboard.html"
+            <a
+              class="border-b-3 text-blue-600 border-blue-600"
+              href="./dashboard.html"
               >Dashboard</a
-            ><a href="./payment.html">Payments</a
-            ><a href="./transaction.html">Transactions</a
-            ><a href="./profile.html">Profile</a>
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./payment.html"
+              >Payments</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./transaction.html"
+              >Transactions</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./profile.html"
+              >Profile</a
+            >
           </nav>
           <!-- profile section  -->
           <div class="flex gap-8 items-center">
@@ -229,15 +253,13 @@
             <h1 class="text-xl md:text-2xl font-bold">
               <span class="text-blue-400">Account</span> Overview
             </h1>
-            <div
-              class="text-sm hidden sm:flex gap-8 items-center font-semibold"
-            >
+            <div class="text-sm flex gap-8 items-center font-semibold">
               <p class="bg-blue-200 py-1 px-3 rounded-xl">Day</p>
-              <p>Week</p>
-              <p>Month</p>
-              <p>Year</p>
+              <p class="hidden sm:block">Week</p>
+              <p class="hidden sm:block">Month</p>
+              <p class="hidden sm:block">Year</p>
             </div>
-            <div class="sm:hidden">
+            <div class="hidden">
               <span class="material-symbols-outlined"> menu </span>
             </div>
           </div>
@@ -278,7 +300,11 @@
             <h1 class="text-2xl max-[442px]:text-xl font-bold">
               <span class="text-blue-400">Account</span> Transactions
             </h1>
-            <a class="text-blue-400 max-[442px]:text-sm" href="">show all</a>
+            <a
+              class="text-blue-400 max-[442px]:text-sm"
+              href="./transaction.html"
+              >show all</a
+            >
           </div>
           <div
             class="overflow-auto max-h-[220px] text-nowrap lg:overflow-x-hidden"

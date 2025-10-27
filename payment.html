@@ -14,7 +14,7 @@
     <div id="pagecontent" class="xl:grid xl:grid-cols-[auto_1fr] flex-col">
       <!-- first section    -->
       <div
-        class="p-8 max-[425px]:shadow-sm max-[425px]:p-2 max-md:px-5 max-xl:px-8 max-[425px]:py-4 max-[425px]:mb-3 max-[425px]:space-y-0 space-y-5 xl:space-y-10 xl:bg-blue-50 lg:h-[100vh]"
+        class="p-8 max-[425px]:shadow-sm max-[425px]:p-2 max-md:px-5 max-xl:px-8 max-[425px]:py-4 max-[425px]:mb-3 max-[425px]:space-y-0 space-y-5 xl:space-y-10 xl:bg-blue-50 xl:h-[100vh]"
       >
         <div class="flex justify-between items-center">
           <div class="flex gap-3 items-center">
@@ -28,11 +28,24 @@
           <nav
             class="text-lg hidden md:flex xl:hidden font-semibold gap-8 lg:gap-12 md:gap-17"
           >
-            <a href="./dashboard.html">Dashboard</a
-            ><a class="border-b-3 border-blue-600" href="./payment.html"
+            <a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./dashboard.html"
+              >Dashboard</a
+            ><a
+              class="border-b-3 border-blue-600 text-blue-600"
+              href="./payment.html"
               >Payments</a
-            ><a href="./transaction.html">Transactions</a
-            ><a class="hidden lg:block" href="./profile.html">Profile</a>
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              href="./transaction.html"
+              >Transactions</a
+            ><a
+              class="hover:text-blue-700 hover:animate-pulse"
+              class="hidden lg:block hover:text-blue-700 hover:animate-pulse"
+              href="./profile.html"
+              >Profile</a
+            >
           </nav>
           <!-- profile section  -->
           <div class="flex xl:hidden gap-8 items-center">
@@ -181,7 +194,7 @@
 
       <!-- Second section -->
       <div
-        class="px-13 max-[426px]:p-2 max-md:px-5 max-xl:px-8 pr-16 space-y-13 h-full xl:bg-gray-50 relative"
+        class="px-13 max-[426px]:p- max-md:px-5 max-xl:px-8 pr-16 space-y-13 h-full xl:bg-gray-50 relative"
       >
         <header class="xl:flex hidden items-center justify-between pt-7">
           <div class="flex xl:hidden gap-3 items-center">
@@ -245,7 +258,7 @@
             </h2>
 
             <!-- Tabs -->
-            <div class="flex border-b border-gray-200 mb-6">
+            <div class="flex flex border-b border-gray-200 mb-6">
               <button
                 id="transferTab"
                 class="tab-btn text-blue-600 border-b-2 border-blue-600 pb-2 px-4 font-medium"
@@ -266,7 +279,7 @@
               </button>
               <button
                 id="dataTab"
-                class="tab-btn text-gray-500 hover:text-blue-600 pb-2 px-4"
+                class="tab-btn hidden sm:block text-gray-500 hover:text-blue-600 pb-2 px-4"
               >
                 Data
               </button>
@@ -457,7 +470,7 @@
           Account No: <span id="account-num"></span>
         </p>
       </div>
-      <!-- second ection  -->
+      <!-- second section  -->
       <div class="border-t py-2 space-y-1">
         <div class="flex justify-between">
           <p>Account Type:</p>
@@ -485,6 +498,7 @@
           </button>
         </a>
         <button
+          id="logout"
           class="w-full font-medium hover:bg-gray-100 text-red-700 px-3 py-2 cursor-pointer rounded-lg"
         >
           Logout
@@ -508,11 +522,17 @@
           class="w-full border border-gray-300 rounded-lg px-3 py-2 text-center tracking-widest text-xl font-semibold"
           placeholder=""
         />
+        <p
+          id="procesingText"
+          class="text-xl font-semibold pt-2 animate-pulse text-green-800"
+        ></p>
+
         <div class="mt-5 flex justify-between">
           <button
             id="cancelPinBtn"
             type="button"
-            class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+            
+            class="px-4 py-2  bg-gray-200 rounded-lg hover:bg-gray-300"
           >
             Cancel
           </button>

@@ -11,6 +11,8 @@ const saveProfileBtnEl = document.getElementById("saveProfileBtn");
 const textError = document.getElementById("text-error");
 const uploadPicture = document.getElementById("upload-picture");
 const picEl = document.getElementById("pic");
+const logoutBtn = document.getElementById("logout");
+
 let base64Image = "";
 let currentProfileImage = "";
 const userUID = localStorage.getItem("uid");
@@ -42,6 +44,19 @@ const firebaseConfig = {
   messagingSenderId: "562089693991",
   appId: "1:562089693991:web:b031edb912f5420e5fcf02",
 };
+
+// pin Error
+const pinError = document.getElementById("pin-error-text");
+const pinInp = document.getElementById("pinInp");
+
+pinInp.addEventListener("input", () => {
+  // console.log(typeof pinInp);
+  if (pinInp.value.length <= 3 || pinInp.value.length >= 5) {
+    return (pinError.textContent = "Pin should only include 4 digits!");
+  } else {
+    pinError.textContent = "";
+  }
+});
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -133,6 +148,7 @@ saveProfileBtnEl.addEventListener("click", async () => {
     profilePicture: base64Image || currentProfileImage,
     cardNumber: cardNumEl.value,
     accountNumber: accountNumEl.value,
+    pin: pinInp.value,
   };
   // console.log(profilePic);
   console.log(base64Image);
@@ -170,4 +186,10 @@ saveProfileBtnEl.addEventListener("click", async () => {
       saveProfileBtnEl.classList.remove("cursor-progress");
     }
   }
+});
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("uid");
+  alert("Session Expired, Redirecting....");
+  window.location.href = "./signin.html";
 });

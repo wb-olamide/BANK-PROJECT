@@ -22,6 +22,7 @@ profileIconEl.forEach((el) => {
   });
 });
 
+
 // Firebase start
 
 // Import the functions you need from the SDKs you need
@@ -84,12 +85,11 @@ onAuthStateChanged(auth, async (user) => {
       el.textContent = profileData.balance.toLocaleString();
     });
 
-    if (user.emailVerified) {
-      // console.log("Verified");
+    if (user.emailVerified == true) {
       verifiedStatus.textContent = "Verified";
     } else {
-      // console.log("Not Verified");
       verifiedStatus.textContent = "Not Verified";
+      verifiedStatus.classList.add("text-red-800");
     }
 
     let currentProfileImage = profileData.profilePicture || "";

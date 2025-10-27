@@ -86,10 +86,11 @@ const handleSignup = async () => {
         cardNumber: cardNum,
         accountNumber: accountNum,
         transactionPin: "",
-        balance: 10000,
-        totalIncome: 10000,
+        balance: 0,
+        totalIncome: 0,
         totalOutcome: 0,
         cardBalance: 0,
+        pin: 1111,
       });
       alert("Account Created Succesfully");
       window.location.href = "./signin.html";
