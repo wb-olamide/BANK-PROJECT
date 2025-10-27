@@ -44,12 +44,12 @@ const usersColRef = collection(DB, "USERS");
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    console.log(user);
+    // console.log(user);
 
     let docRef = doc(usersColRef, user.uid);
     let docSnapShot = await getDoc(docRef);
     let profileData = docSnapShot.data();
-    console.log(profileData);
+    // console.log(profileData);
 
     accountHolderNameEl.textContent = `${profileData.firstName} ${profileData.lastName}`;
     picEl.src = profileData.profilePicture;

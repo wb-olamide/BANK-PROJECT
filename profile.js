@@ -17,7 +17,7 @@ let base64Image = "";
 let currentProfileImage = "";
 const userUID = localStorage.getItem("uid");
 
-console.log(userUID);
+// console.log(userUID);
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import {
@@ -65,11 +65,11 @@ const DB = getFirestore(app);
 const usersColRef = collection(DB, "USERS");
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    console.log(user);
+    // console.log(user);
     const docRef = doc(usersColRef, user.uid);
     const docSnapShot = await getDoc(docRef);
     const profileData = docSnapShot.data();
-    console.log(profileData);
+    // console.log(profileData);
     // adding profile
     lastNameEl.value = `${profileData.lastName}`;
     firstNameEl.value = `${profileData.firstName}`;
@@ -79,17 +79,15 @@ onAuthStateChanged(auth, async (user) => {
     emailEl.value = `${profileData.email}`;
     cardNumEl.value = `${profileData.cardNumber}`;
     accountNumEl.value = `${profileData.accountNumber}`;
+    pinInp.value = profileData.pin;
+
     // uploadPicture.file = profileData.profilePicture ;
     currentProfileImage = profileData.profilePicture || "";
     if (currentProfileImage) {
       picEl.src = currentProfileImage;
     }
 
-    // console.log(saveProfilepic);
-
-    // picEl.setAttribute("src", `${profileData.profilePicture}`);
-    // picEl.src = `${profileData.profilePicture}`;
-    // console.log(`${profileData.profilePicture}`);
+   
 
     if (user.emailVerified == true) {
       statusEl.textContent = "Verified";
@@ -131,7 +129,7 @@ uploadPicture.addEventListener("change", (e) => {
   reader.onload = (ev) => {
     base64Image = ev.target.result; // store base64
     picEl.src = base64Image; // preview image
-    console.log("Base64 image ready:", base64Image.slice(0, 30) + "...");
+    // console.log("Base64 image ready:", base64Image.slice(0, 30) + "...");
   };
 
   reader.readAsDataURL(file); // converts to base64
@@ -150,10 +148,7 @@ saveProfileBtnEl.addEventListener("click", async () => {
     accountNumber: accountNumEl.value,
     pin: pinInp.value,
   };
-  // console.log(profilePic);
-  console.log(base64Image);
-
-  // console.log("Updating...");
+ 
 
   if (firstNameEl.value == "" || lastNameEl.value == "") {
     alert("Name Fields must not be empty");
@@ -171,7 +166,7 @@ saveProfileBtnEl.addEventListener("click", async () => {
     } catch (error) {
       console.log(error);
       if (error) {
-        console.log(error.code);
+        // console.log(error.code);
         const errorCode = error.code;
         if (errorCode === "invalid-argument") {
           textError.textContent =

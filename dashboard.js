@@ -70,7 +70,7 @@ onAuthStateChanged(auth, async (user) => {
     const userdocRef = doc(usersColRef, user.uid);
     const docSnapShot = await getDoc(userdocRef);
     profileData = docSnapShot.data();
-    console.log(profileData);
+    // console.log(profileData);
     accountHolderNameEl.forEach((el) => {
       el.textContent = `${profileData.firstName} ${profileData.lastName}`;
     });
@@ -108,31 +108,7 @@ const UserUID = localStorage.getItem("uid");
 
 // Transaction Direction
 let direction;
-// if ((transactionType = "Deposit")) {
-//   direction = "Incoming";
-// } else {
-//   direction = "Outgoing";
-// }
 
-// const addTransactionsHistory = async () => {
-//   try {
-//     console.log(UserUID);
-//     const transactionDetails = {
-//       Description: "Money transfer from WBEE",
-//       Type: "Bank Transfer",
-//       Date: new Date().toLocaleDateString(),
-//       Amount: 200,
-//       Status: "Pending", // or "Pending", "Failed"
-//       createdAt: serverTimestamp(),
-//       Direction: "direction",
-//     };
-//     const transactionsColRef = collection(DB, "USERS", UserUID, "transactions");
-//     const docRef = await addDoc(transactionsColRef, transactionDetails);
-//     // console.log(docRef);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 // addTransactionsHistory();
 const gettransactionsHistory = async () => {
   try {
@@ -140,7 +116,7 @@ const gettransactionsHistory = async () => {
     const q = query(transactionsColRef, orderBy("createdAt", "desc"));
     const querySnapShot = await getDocs(q);
     const transactionDetails = [];
-    console.log(querySnapShot);
+    // console.log(querySnapShot);
 
     querySnapShot.forEach((doc) => {
       // const transactionDetails = doc.data();
@@ -205,10 +181,7 @@ try {
     labels.unshift(chartData.Date);
     // console.log(labels);
 
-    // amounts.push(chartData.Amount);
-    // console.log(chartDetails);
-    // console.log(outAmounts);
-    // console.log(inAmounts);
+  
   });
 } catch (error) {
   console.log(error);

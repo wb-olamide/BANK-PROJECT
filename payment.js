@@ -73,7 +73,7 @@ onAuthStateChanged(auth, async (user) => {
     const userdocRef = doc(usersColRef, user.uid);
     const docSnapShot = await getDoc(userdocRef);
     profileData = docSnapShot.data();
-    console.log(profileData);
+    // console.log(profileData);
     accountHolderNameEl.forEach((el) => {
       el.textContent = `${profileData.firstName} ${profileData.lastName}`;
     });
@@ -218,7 +218,7 @@ transferAccName.addEventListener("input", async () => {
     if (!querySnapShot.empty) {
       recieversData = querySnapShot.docs[0].data();
       recieverDoc = querySnapShot.docs[0].id;
-      console.log(recieverDoc);
+      // console.log(recieverDoc);
 
       nameDisplay.classList.remove("animate-pulse");
       nameDisplay.textContent = `✅ ${recieversData.firstName} ${recieversData.lastName}`;
@@ -290,7 +290,7 @@ document.getElementById("transferBtn").addEventListener("click", async () => {
               "cursor-not-allowed"
             );
             procesingText.textContent = "Processing...";
-            console.log(profileData);
+            // console.log(profileData);
             const senderTransactionDetails = {
               Description: `Transfer to ${recieversData.firstName} ${
                 recieversData.lastName
@@ -334,19 +334,19 @@ document.getElementById("transferBtn").addEventListener("click", async () => {
             // Balance Update
             let senderBalance =
               Number(profileData.balance) - Number(transferAmount.value);
-            console.log("senderBalance:", senderBalance);
+            // console.log("senderBalance:", senderBalance);
 
             let senderOutcome =
               Number(profileData.totalOutcome) + Number(transferAmount.value);
-            console.log("senderOutcome:", senderOutcome);
+            // console.log("senderOutcome:", senderOutcome);
 
             let recieversBalance =
               Number(recieversData.balance) + Number(transferAmount.value);
-            console.log("recieversBalance:", recieversBalance);
+            // console.log("recieversBalance:", recieversBalance);
 
             let recieverIncome =
               Number(recieversData.totalIncome) + Number(transferAmount.value);
-            console.log("recieverIncome:", recieverIncome);
+            // console.log("recieverIncome:", recieverIncome);
             procesingText.textContent = "Successful";
             CancelPinModal();
             alert("✅ Transfer Successful!");
@@ -428,7 +428,7 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
               "cursor-not-allowed"
             );
             procesingText.textContent = "Processing...";
-            console.log(profileData);
+            // console.log(profileData);
             const senderTransactionDetails = {
               Description: `Airtime Purchase to ${airtimeNumber.value} `,
               Type: "Airtime Transfer",
@@ -438,17 +438,7 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
               createdAt: serverTimestamp(),
               Direction: "outgoing",
             };
-            // const recieverTransactionDetails = {
-            //   Description: `Transfer from ${profileData.firstName} ${
-            //     profileData.lastName
-            //   } - ${transferDesc.value.slice(0, 15)}`,
-            //   Type: "Bank Transfer",
-            //   Date: new Date().toLocaleDateString(),
-            //   Amount: transferAmount.value,
-            //   Status: "Successful", //try "Pending", "Failed"
-            //   createdAt: serverTimestamp(),
-            //   Direction: "Incoming",
-            // };
+
             pinModal.classList.add("hidden");
             pinModal.classList.remove("flex");
             pageContent.classList.remove("blur-[2px]", "brightness-60");
@@ -460,31 +450,16 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
               "TRANSACTIONS"
             );
             await addDoc(senderTransDocRef, senderTransactionDetails);
-            // reciever's reference
-            // const recieverTransDocRef = collection(
-            //   DB,
-            //   "USERS",
-            //   recieverDoc,
-            //   "TRANSACTIONS"
-            // );
-            // await addDoc(recieverTransDocRef, recieverTransactionDetails);
 
             // Balance Update
             let senderBalance =
               Number(profileData.balance) - Number(airtimeAmount.value);
-            console.log("senderBalance:", senderBalance);
+            // console.log("senderBalance:", senderBalance);
 
             let senderOutcome =
               Number(profileData.totalOutcome) + Number(airtimeAmount.value);
-            console.log("senderOutcome:", senderOutcome);
+            // console.log("senderOutcome:", senderOutcome);
 
-            // let recieversBalance =
-            //   Number(recieversData.balance) + Number(transferAmount.value);
-            // console.log("recieversBalance:", recieversBalance);
-
-            // let recieverIncome =
-            //   Number(recieversData.totalIncome) + Number(transferAmount.value);
-            // console.log("recieverIncome:", recieverIncome);
             procesingText.textContent = "Successful";
             CancelPinModal();
             alert("✅ Airtime Purchase Successful!");
@@ -497,13 +472,6 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
               balance: senderBalance,
               totalOutcome: senderOutcome,
             });
-
-            // Update Reciever's balance
-            // const recieversBalDocRef = doc(usersColRef, recieverDoc);
-            // await updateDoc(recieversBalDocRef, {
-            //   balance: recieversBalance,
-            //   totalIncome: recieverIncome,
-            // });
 
             // console.log(recieversData);
           } catch (error) {
@@ -554,7 +522,7 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
             "cursor-not-allowed"
           );
           procesingText.textContent = "Processing...";
-          console.log(profileData);
+          // console.log(profileData);
           const senderTransactionDetails = {
             Description: `$ ${cardAmount.value} Card Funding `,
             Type: "Card Funding",
@@ -564,17 +532,7 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
             createdAt: serverTimestamp(),
             Direction: "outgoing",
           };
-          // const recieverTransactionDetails = {
-          //   Description: `Transfer from ${profileData.firstName} ${
-          //     profileData.lastName
-          //   } - ${transferDesc.value.slice(0, 15)}`,
-          //   Type: "Bank Transfer",
-          //   Date: new Date().toLocaleDateString(),
-          //   Amount: transferAmount.value,
-          //   Status: "Successful", //try "Pending", "Failed"
-          //   createdAt: serverTimestamp(),
-          //   Direction: "Incoming",
-          // };
+
           pinModal.classList.add("hidden");
           pinModal.classList.remove("flex");
           pageContent.classList.remove("blur-[2px]", "brightness-60");
@@ -586,27 +544,19 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
             "TRANSACTIONS"
           );
           await addDoc(senderTransDocRef, senderTransactionDetails);
-          // reciever's reference
-          // const recieverTransDocRef = collection(
-          //   DB,
-          //   "USERS",
-          //   recieverDoc,
-          //   "TRANSACTIONS"
-          // );
-          // await addDoc(recieverTransDocRef, recieverTransactionDetails);
 
           // Balance Update
           let senderBalance =
             Number(profileData.balance) - Number(cardAmount.value);
-          console.log("senderBalance:", senderBalance);
+          // console.log("senderBalance:", senderBalance);
 
           let senderOutcome =
             Number(profileData.totalOutcome) + Number(cardAmount.value);
-          console.log("senderOutcome:", senderOutcome);
+          // console.log("senderOutcome:", senderOutcome);
 
           let cardBalance =
             Number(profileData.cardBalance) + Number(cardAmount.value);
-          console.log("senderBalance:", cardBalance);
+          // console.log("senderBalance:", cardBalance);
 
           procesingText.textContent = "Successful";
           CancelPinModal();
