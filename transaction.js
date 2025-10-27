@@ -51,7 +51,7 @@ onAuthStateChanged(auth, async (user) => {
     let profileData = docSnapShot.data();
     // console.log(profileData);
 
-    accountHolderNameEl.textContent = `${profileData.firstName} ${profileData.lastName}`;
+    accountHolderNameEl.textContent = `${profileData.firstName}`;
     picEl.src = profileData.profilePicture;
   } else {
     alert("Session Expired! Redirecting....");

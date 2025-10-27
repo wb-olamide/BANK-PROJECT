@@ -12,6 +12,7 @@ const textError = document.getElementById("text-error");
 const uploadPicture = document.getElementById("upload-picture");
 const picEl = document.getElementById("pic");
 const logoutBtn = document.getElementById("logout");
+const visNameEl = document.getElementById("visName");
 
 let base64Image = "";
 let currentProfileImage = "";
@@ -53,10 +54,26 @@ pinInp.addEventListener("input", () => {
   // console.log(typeof pinInp);
   if (pinInp.value.length <= 3 || pinInp.value.length >= 5) {
     return (pinError.textContent = "Pin should only include 4 digits!");
+  }
+  if (!Number(pinInp.value)) {
+    return (pinError.textContent = "Pin should include only Digit!");
   } else {
     pinError.textContent = "";
   }
 });
+// Pin visibility
+
+visNameEl.addEventListener("click", () => {
+  if (visNameEl.innerText == "visibility") {
+    pinInp.setAttribute("type", "text");
+    visNameEl.innerText = "visibility_off";
+  } else if (visNameEl.innerText == "visibility_off") {
+    pinInp.setAttribute("type", "password");
+    visNameEl.innerText = "visibility";
+  }
+});
+
+// visNameEl.addEventListener("click", () => {});
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -86,8 +103,6 @@ onAuthStateChanged(auth, async (user) => {
     if (currentProfileImage) {
       picEl.src = currentProfileImage;
     }
-
-   
 
     if (user.emailVerified == true) {
       statusEl.textContent = "Verified";
@@ -148,7 +163,6 @@ saveProfileBtnEl.addEventListener("click", async () => {
     accountNumber: accountNumEl.value,
     pin: pinInp.value,
   };
- 
 
   if (firstNameEl.value == "" || lastNameEl.value == "") {
     alert("Name Fields must not be empty");

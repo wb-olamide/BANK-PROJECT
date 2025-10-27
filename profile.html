@@ -73,7 +73,6 @@
             <div>
               <label class="block text-sm text-gray-500 mb-1">First Name</label>
               <input
-                id=""
                 type="text"
                 placeholder="John Doe"
                 class="w-full first-name font-medium text-gray-800 px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 outline-none"
@@ -82,7 +81,6 @@
             <div>
               <label class="block text-sm text-gray-500 mb-1">Last Name</label>
               <input
-                id=""
                 type="text"
                 placeholder="John Doe"
                 class="w-full last-name font-medium text-gray-800 px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 outline-none"
@@ -184,15 +182,21 @@
                 class="w-full cursor-not-allowed px-4 py-2 font-medium text-gray-800 border border-gray-300 rounded-xl bg-gray-50 outline-none"
               />
             </div>
-            <div>
+            <div class="relative">
               <label class="block text-sm text-gray-500 mb-1">PIN</label>
               <input
                 id="pinInp"
-                type="number"
+                type="password"
                 maxlength="4"
                 placeholder="0000"
                 class="w-full px-4 py-2 font-medium text-gray-800 border border-gray-300 rounded-xl bg-gray-50 outline-none"
               />
+              <span
+                id="visName"
+                class="material-symbols-outlined cursor-pointer absolute right-3 text-gray-600 top-8"
+              >
+                visibility
+              </span>
               <p id="pin-error-text" class="p-1 text-red-500"></p>
             </div>
           </div>

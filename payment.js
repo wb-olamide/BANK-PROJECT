@@ -179,16 +179,18 @@ const showPinModal = () => {
   pinModal.classList.remove("hidden");
   pinModal.classList.add("flex", "cursor-pointer");
   pageContent.classList.add("blur-[2px]", "brightness-60");
+  console.log("hello");
 };
 // Pin Modal Cancel
 const cancelPinBtn = document.getElementById("cancelPinBtn");
 
 const CancelPinModal = () => {
-  pinModal.classList.add("hidden");
-  pinModal.classList.remove("flex", "cursor-pointer");
-  pageContent.classList.remove("blur-[2px]", "brightness-60");
-  procesingText.textContent = "";
-  document.getElementById("pinInput").value = "";
+  // pinModal.classList.add("hidden");
+  // pinModal.classList.remove("flex", "cursor-pointer");
+  // pageContent.classList.remove("blur-[2px]", "brightness-60");
+  // procesingText.textContent = "";
+  // document.getElementById("pinInput").value = "";
+  window.location.href = "./payment.html";
 };
 cancelPinBtn.addEventListener("click", () => {
   CancelPinModal();
