@@ -11,6 +11,7 @@ const balanceEl = document.querySelectorAll(".account-balance");
 const incomeEl = document.getElementById("account-income");
 const outcomeEl = document.getElementById("account-outcome");
 const cardBalance = document.getElementById("cardBalance");
+const logoutBtn = document.getElementById("logout");
 
 let profileData;
 let accountHolderNameEl = document.querySelectorAll(".accountHolderName");
@@ -21,7 +22,6 @@ profileIconEl.forEach((el) => {
     pageContent.classList.add("blur-[2px]", "brightness-50");
   });
 });
-
 
 // Firebase start
 
@@ -180,8 +180,6 @@ try {
     chartDetails.push(doc.data());
     labels.unshift(chartData.Date);
     // console.log(labels);
-
-  
   });
 } catch (error) {
   console.log(error);
@@ -223,4 +221,11 @@ const transactionChart = new Chart(ctx, {
       },
     },
   },
+});
+
+// Logout Function
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("uid");
+  alert("Session Expired, Redirecting....");
+  window.location.href = "./signin.html";
 });

@@ -18,7 +18,6 @@
     --color-green-400: oklch(79.2% 0.209 151.711);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-600: oklch(62.7% 0.194 149.214);
-    --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
@@ -242,18 +241,6 @@
   .top-8 {
     top: calc(var(--spacing) * 8);
   }
-  .top-9 {
-    top: calc(var(--spacing) * 9);
-  }
-  .top-10 {
-    top: calc(var(--spacing) * 10);
-  }
-  .top-12 {
-    top: calc(var(--spacing) * 12);
-  }
-  .top-14 {
-    top: calc(var(--spacing) * 14);
-  }
   .top-23 {
     top: calc(var(--spacing) * 23);
   }
@@ -262,9 +249,6 @@
   }
   .right-3 {
     right: calc(var(--spacing) * 3);
-  }
-  .right-4 {
-    right: calc(var(--spacing) * 4);
   }
   .right-15 {
     right: calc(var(--spacing) * 15);
@@ -293,17 +277,8 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
-  .mt-7 {
-    margin-top: calc(var(--spacing) * 7);
-  }
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
-  }
-  .mt-10 {
-    margin-top: calc(var(--spacing) * 10);
-  }
-  .mt-15 {
-    margin-top: calc(var(--spacing) * 15);
   }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
@@ -359,8 +334,23 @@
   .h-full {
     height: 100%;
   }
+  .max-h-\[1px\] {
+    max-height: 1px;
+  }
   .max-h-\[65vh\] {
     max-height: 65vh;
+  }
+  .max-h-\[170px\] {
+    max-height: 170px;
+  }
+  .max-h-\[180px\] {
+    max-height: 180px;
+  }
+  .max-h-\[190px\] {
+    max-height: 190px;
+  }
+  .max-h-\[200px\] {
+    max-height: 200px;
   }
   .max-h-\[220px\] {
     max-height: 220px;
@@ -1273,16 +1263,6 @@
       display: block;
     }
   }
-  .lg\:h-\[100vh\] {
-    @media (width >= 64rem) {
-      height: 100vh;
-    }
-  }
-  .lg\:h-full {
-    @media (width >= 64rem) {
-      height: 100%;
-    }
-  }
   .lg\:w-\[40\%\] {
     @media (width >= 64rem) {
       width: 40%;
@@ -1353,6 +1333,11 @@
       height: 100vh;
     }
   }
+  .xl\:h-full {
+    @media (width >= 80rem) {
+      height: 100%;
+    }
+  }
   .xl\:grid-cols-\[auto_1fr\] {
     @media (width >= 80rem) {
       grid-template-columns: auto 1fr;
@@ -1366,16 +1351,6 @@
   .xl\:gap-0 {
     @media (width >= 80rem) {
       gap: calc(var(--spacing) * 0);
-    }
-  }
-  .xl\:gap-2 {
-    @media (width >= 80rem) {
-      gap: calc(var(--spacing) * 2);
-    }
-  }
-  .xl\:gap-20 {
-    @media (width >= 80rem) {
-      gap: calc(var(--spacing) * 20);
     }
   }
   .xl\:gap-30 {

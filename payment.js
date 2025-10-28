@@ -344,13 +344,13 @@ document.getElementById("transferBtn").addEventListener("click", async () => {
 
             let recieversBalance =
               Number(recieversData.balance) + Number(transferAmount.value);
-            // console.log("recieversBalance:", recieversBalance);
+            console.log("recieversBalance:", recieversBalance);
 
             let recieverIncome =
               Number(recieversData.totalIncome) + Number(transferAmount.value);
-            // console.log("recieverIncome:", recieverIncome);
+            console.log("recieverIncome:", recieverIncome);
             procesingText.textContent = "Successful";
-            CancelPinModal();
+
             alert("✅ Transfer Successful!");
             transferAcc.value = "";
             transferAmount.value = "";
@@ -375,6 +375,7 @@ document.getElementById("transferBtn").addEventListener("click", async () => {
           } catch (error) {
             console.log(error);
           } finally {
+            CancelPinModal();
             confirmPinBtn.classList.remove(
               "disabled",
               "bg-gray-400",
@@ -463,7 +464,6 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
             // console.log("senderOutcome:", senderOutcome);
 
             procesingText.textContent = "Successful";
-            CancelPinModal();
             alert("✅ Airtime Purchase Successful!");
             airtimeNumber.value = "";
             airtimeAmount.value = "";
@@ -479,6 +479,8 @@ document.getElementById("airtimeBtn").addEventListener("click", async () => {
           } catch (error) {
             console.log(error);
           } finally {
+            CancelPinModal();
+
             confirmPinBtn.classList.remove(
               "disabled",
               "bg-gray-400",
@@ -564,7 +566,6 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
           // console.log("senderBalance:", cardBalance);
 
           procesingText.textContent = "Successful";
-          CancelPinModal();
           alert("✅ Card Funded Successful!");
           // airtimeNumber.value = "";
           cardAmount.value = "";
@@ -579,6 +580,8 @@ document.getElementById("cardBtn").addEventListener("click", async () => {
         } catch (error) {
           console.log(error);
         } finally {
+          CancelPinModal();
+
           confirmPinBtn.classList.remove(
             "disabled",
             "bg-gray-400",
