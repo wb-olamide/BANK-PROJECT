@@ -3,6 +3,9 @@ const loginForm = document.getElementById("login-form");
 const passwordEl = document.getElementById("password");
 const errorMessage = document.getElementById("error-message");
 const loginBtn = document.getElementById("login-btn");
+// const pinInp = document.getElementsByClassName("pinInp");
+const visNameEl = document.getElementById("visName");
+
 let data;
 
 // Import the functions you need from the SDKs you need
@@ -31,6 +34,16 @@ const firebaseConfig = {
   messagingSenderId: "562089693991",
   appId: "1:562089693991:web:b031edb912f5420e5fcf02",
 };
+
+visNameEl.addEventListener("click", () => {
+  if (visNameEl.innerText == "visibility") {
+    passwordEl.setAttribute("type", "text");
+    visNameEl.innerText = "visibility_off";
+  } else if (visNameEl.innerText == "visibility_off") {
+    passwordEl.setAttribute("type", "password");
+    visNameEl.innerText = "visibility";
+  }
+});
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
